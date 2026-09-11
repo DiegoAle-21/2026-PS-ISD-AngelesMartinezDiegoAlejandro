@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+}
+
+.titulo {
+    text-align: center;
+    border-bottom: 2px solid #eef0f3;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+}
+
+.titulo h1 {
+    color: #1a252f;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.titulo p {
+    color: #666;
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tablas {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #1a252f;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.tablaps th {
+    background-color: #0056b3;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.tablaisd th {
+    background-color: #107c41;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #f1f4f8;
+}
+
+td {
+    border-bottom: 1px solid #eef0f3;
+    font-size: 0.95rem;
+}
+
+td a {
+    color: #107c41;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+
+    .titulo h1 {
+        font-size: 1.4rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}
