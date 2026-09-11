@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea 1 - Reporte de Petición GET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="content">
+
+      <a href="../../index.html" class="btn-volver">← Volver al Índice</a>
+
+      <div class="titulo">
+        <h1>Reporte de Ejecución: Petición GET</h1>
+      </div>
+
+      <div class="card">
+        <h2>1. Captura de pantalla</h2>
+        <p>Esta es la prueba de lo que me arrojó la terminal al ejecutar el archivo de JavaScript con Node.js:</p>
+        <img src="primera peticion node.png" alt="Captura de terminal ejecutando Node.js">
+      </div>
+
+      <div class="card">
+        <h2>2. ¿Qué fue lo que pasó y si se conectó?</h2>
+        <p>
+          <b>¿Se logró la conexión?</b> Sí, la petición se conectó correctamente con la API y nos devolvió la información sin problemas.
+        </p>
+        <p>
+          <b>Un detalle en la consola:</b> En las primeras líneas de la terminal, las variables como <i>${API_URL}</i> o <i>${duracionMs}</i> se imprimieron tal cual, con todo y el signo de dinero. Esto pasó porque en las impresiones en consola del código original se usaron comillas dobles normales en lugar de comillas invertidas . A pesar de ese detalle de formato en los mensajes, la llamada de red sí se hizo bien y la API respondió.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>3. ¿Qué elementos se obtuvieron?</h2>
+        <p>La API me regresó una lista con <b>3 talleres</b> registrados:</p>
+        <ul>
+          <li>
+            <b>Taller 1:</b> "Introducción a Python" — impartido por la Ing. María López (con cupo para 25 personas).
+          </li>
+          <li>
+            <b>Taller 2:</b> "Fundamentos de Redes" — impartido por el Ing. Carlos Ramírez (con cupo para 30 personas).
+          </li>
+          <li>
+            <b>Taller 3:</b> "Diseño de Bases de Datos" — impartido por la Ing. Ana Torres (con cupo para 20 personas).
+          </li>
+        </ul>
+        <p>Además, cada taller venía con su propiedad <i>id</i> única, su fecha programada y el registro de cuándo fue creado (<i>created_at</i>).</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

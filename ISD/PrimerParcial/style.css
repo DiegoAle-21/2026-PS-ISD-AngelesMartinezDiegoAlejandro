@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+}
+
+/* Botón de volver */
+.btn-volver {
+    display: inline-block;
+    background-color: #107c41;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-volver:hover {
+    background-color: #0b592e;
+}
+
+.titulo {
+    text-align: center;
+    border-bottom: 2px solid #eef0f3;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.titulo h1 {
+    color: #1a252f;
+    font-size: 1.8rem;
+}
+
+.card {
+    background: #f8f9fa;
+    border: 1px solid #eef0f3;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #107c41;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    display: block;
+    margin-top: 10px;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+i {
+    font-family: Consolas, monospace;
+    font-style: normal;
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+
+    .titulo h1 {
+        font-size: 1.4rem;
+    }
+}
