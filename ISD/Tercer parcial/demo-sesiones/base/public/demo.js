@@ -171,4 +171,3 @@ $('btn-sesiones').addEventListener('click', actualizarTabla);
     : JSON.stringify(configuracion.datos, null, 2);
   await refrescarTodo();
 })();
-
