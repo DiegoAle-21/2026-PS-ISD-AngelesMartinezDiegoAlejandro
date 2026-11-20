@@ -174,12 +174,14 @@ async function mostrarRevocados() {
     return;
   }
   $('jwt-donde').textContent = datos.revocacion
-    ? 'Revocación ACTIVA: tabla tokens_revocados en MySQL'
+    ? datos.revocados.length === 0
+      ? 'Revocación ACTIVA; todavía no hay tokens revocados. Usa logout o refresh para agregar uno.'
+      : `Revocación ACTIVA: ${datos.revocados.length} token(s) guardado(s) en MySQL`
     : 'Revocación DESACTIVADA (jwtRevocar: false): el servidor no anota nada';
   if (datos.revocados.length === 0) {
     const tr = document.createElement('tr');
     const td = document.createElement('td');
-    td.colSpan = 4;
+    td.colSpan = 5;
     td.textContent = '(vacía)';
     tr.append(td);
     tabla.append(tr);
@@ -187,7 +189,13 @@ async function mostrarRevocados() {
   }
   for (const t of datos.revocados) {
     const tr = document.createElement('tr');
-    for (const valor of [t.jti, t.usuario, new Date(t.expira).toLocaleString(), new Date(t.revocadoEn).toLocaleString()]) {
+    for (const valor of [
+      t.jti,
+      t.usuario,
+      new Date(t.expira).toLocaleString(),
+      new Date(t.revocadoEn).toLocaleString(),
+      t.estado === 'vencido' ? 'Vencido (en desuso)' : 'Revocado',
+    ]) {
       const td = document.createElement('td');
       td.textContent = valor;
       tr.append(td);

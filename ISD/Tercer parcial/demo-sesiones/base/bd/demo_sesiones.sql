@@ -33,7 +33,7 @@ CREATE TABLE sessions (
 
 -- Lista negra de JWT (semana 13): tokens que ya no se aceptan aunque su firma y su exp sigan bien.
 -- jti         = el id único del token (claim jti)
--- expira      = cuándo vence el token (su exp); después de esa fecha la fila ya se puede borrar
+-- expira      = cuándo vence el token (su exp); se conserva para mostrar el historial aunque venza
 -- revocado_en = cuándo se revocó (logout o refresh)
 CREATE TABLE tokens_revocados (
   jti VARCHAR(64) NOT NULL PRIMARY KEY,

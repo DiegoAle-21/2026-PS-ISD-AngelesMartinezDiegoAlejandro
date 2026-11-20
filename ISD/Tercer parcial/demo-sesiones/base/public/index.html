@@ -83,11 +83,12 @@
       <h2>6 · Lista negra (tokens revocados)</h2>
       <p id="lista-negra-estado" class="estado-almacen">…</p>
       <p class="detalle">Solo para la clase (<code>GET /api/diagnostico/tokens</code>). Al renovar el token o cerrar
-        sesión, el <code>jti</code> del token se anota en la tabla <code>tokens_revocados</code> y el servidor ya no lo acepta
-        aunque su firma y su <code>exp</code> sigan bien.</p>
+        sesión, el <code>jti</code> del token se anota en la tabla <code>tokens_revocados</code> y se conserva como historial
+        aunque venza. Iniciar sesión no lo agrega: debe renovarse o cerrar sesión. El servidor ya no acepta el token
+        revocado aunque su firma y su <code>exp</code> sigan bien.</p>
       <table>
-        <thead><tr><th>jti</th><th>Usuario</th><th>Vencía</th><th>Revocado</th></tr></thead>
-        <tbody id="tabla-lista-negra"><tr><td colspan="4">(vacía)</td></tr></tbody>
+        <thead><tr><th>jti</th><th>Usuario</th><th>Vencía</th><th>Revocado</th><th>Estado</th></tr></thead>
+        <tbody id="tabla-lista-negra"><tr><td colspan="5">(vacía)</td></tr></tbody>
       </table>
       <button id="btn-lista-negra" type="button">Actualizar lista</button>
     </section>

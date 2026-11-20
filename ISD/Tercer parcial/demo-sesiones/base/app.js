@@ -442,7 +442,13 @@ function crearApp(config, pool) {
       const filas = await tokens.listar();
       res.json({
         revocacion: Boolean(config.jwtRevocar),
-        revocados: filas.map((f) => ({ jti: idCorto(f.jti), usuario: f.usuario, expira: f.expira, revocadoEn: f.revocado_en })),
+        revocados: filas.map((f) => ({
+          jti: idCorto(f.jti),
+          usuario: f.usuario,
+          expira: f.expira,
+          revocadoEn: f.revocado_en,
+          estado: new Date(f.expira).getTime() <= Date.now() ? 'vencido' : 'revocado',
+        })),
       });
     } catch (error) {
       next(error);

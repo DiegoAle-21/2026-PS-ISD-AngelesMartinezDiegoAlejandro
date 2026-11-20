@@ -7,7 +7,8 @@
     "start": "node server.js",
     "bd": "node bd/crear-bd.js",
     "probar": "node pruebas/probar.js",
-    "probar:jwt": "node pruebas/probar-jwt.js"
+    "probar:jwt": "node pruebas/probar-jwt.js",
+    "probar:tokens": "node pruebas/probar-tokens.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

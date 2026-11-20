@@ -90,10 +90,12 @@
       <h2>5 · Lo que guarda el servidor: la lista negra</h2>
       <p id="jwt-donde" class="estado-almacen">…</p>
       <p class="detalle">Solo para la clase (GET /api/diagnostico/tokens). Con JWT el servidor no guarda las sesiones;
-        solo anota los tokens revocados (logout o refresh) en la tabla <code>tokens_revocados</code>.</p>
+        solo anota los tokens revocados (logout o refresh) en la tabla <code>tokens_revocados</code>, y conserva el
+        historial aunque los tokens venzan. Iniciar sesión solo crea un token; para agregarlo aquí usa
+        <code>POST /api/jwt/logout</code> o <code>POST /api/jwt/refresh</code>. “Borrar el token de la página” no lo revoca.</p>
       <table>
-        <thead><tr><th>jti</th><th>Usuario</th><th>Vencía</th><th>Revocado</th></tr></thead>
-        <tbody id="jwt-tabla-revocados"><tr><td colspan="4">(vacía)</td></tr></tbody>
+        <thead><tr><th>jti</th><th>Usuario</th><th>Vencía</th><th>Revocado</th><th>Estado</th></tr></thead>
+        <tbody id="jwt-tabla-revocados"><tr><td colspan="5">(vacía)</td></tr></tbody>
       </table>
       <button id="jwt-btn-revocados" type="button">Actualizar tabla</button>
     </section>

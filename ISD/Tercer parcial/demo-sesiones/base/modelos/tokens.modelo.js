@@ -1,9 +1,8 @@
 // En este archivo está la lista negra: la tabla tokens_revocados.
 function crearModeloTokens(pool) {
   // Anota un token como revocado (por su jti). exp viene en segundos desde 1970.
+  // Se conserva el historial aunque el token venza; solo el jti y sus metadatos se guardan.
   async function revocar(jti, usuario, exp) {
-    // Limpieza: los tokens que ya vencieron no necesitan seguir en la lista negra.
-    await pool.query('DELETE FROM tokens_revocados WHERE expira <= NOW()');
     await pool.query(
       'INSERT IGNORE INTO tokens_revocados (jti, usuario, expira) VALUES (?, ?, FROM_UNIXTIME(?))',
       [jti, usuario, exp],

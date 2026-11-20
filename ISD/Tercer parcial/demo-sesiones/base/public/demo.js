@@ -288,7 +288,7 @@ async function mostrarListaNegra() {
   const filaUnica = (texto) => {
     const tr = document.createElement('tr');
     const td = celda(texto);
-    td.colSpan = 4;
+    td.colSpan = 5;
     tr.append(td);
     tabla.append(tr);
   };
@@ -298,7 +298,9 @@ async function mostrarListaNegra() {
     return filaUnica('(sin datos)');
   }
   $('lista-negra-estado').textContent = datos.revocacion
-    ? `Revocación ACTIVA · ${datos.revocados.length} token(s) en tokens_revocados`
+    ? datos.revocados.length === 0
+      ? 'Revocación ACTIVA · sin revocados todavía. Renueva o cierra sesión para agregar uno.'
+      : `Revocación ACTIVA · ${datos.revocados.length} token(s) en tokens_revocados`
     : 'Revocación DESACTIVADA (jwtRevocar: false): el servidor no anota nada';
   if (datos.revocados.length === 0) return filaUnica('(vacía)');
 
@@ -313,6 +315,7 @@ async function mostrarListaNegra() {
       celda(t.usuario),
       celda(new Date(t.expira).toLocaleTimeString()),
       celda(new Date(t.revocadoEn).toLocaleTimeString()),
+      celda(t.estado === 'vencido' ? 'Vencido (en desuso)' : 'Revocado'),
     );
     tabla.append(tr);
   }
