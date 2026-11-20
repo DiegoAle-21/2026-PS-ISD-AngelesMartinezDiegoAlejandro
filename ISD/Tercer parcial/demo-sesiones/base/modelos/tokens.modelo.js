@@ -1,24 +1,23 @@
-// en este archivo vamos a tener la lista negra de la tabla de los tokens revocados.
-
+// En este archivo está la lista negra: la tabla tokens_revocados.
 function crearModeloTokens(pool) {
-  // vamos a anotar un token como revocado
+  // Anota un token como revocado (por su jti). exp viene en segundos desde 1970.
   async function revocar(jti, usuario, exp) {
+    // Limpieza: los tokens que ya vencieron no necesitan seguir en la lista negra.
+    await pool.query('DELETE FROM tokens_revocados WHERE expira <= NOW()');
     await pool.query(
       'INSERT IGNORE INTO tokens_revocados (jti, usuario, expira) VALUES (?, ?, FROM_UNIXTIME(?))',
       [jti, usuario, exp],
     );
   }
 
-  // pregunto: ¿este jwt está en la lista?
+  // ¿Este jti está en la lista negra?
+  // CORREGIDO: la tabla decía tokens_recovados y el arreglo de parámetros estaba FUERA de pool.query(...).
   async function estaRevocado(jti) {
-    const [filas] = await pool.query(
-      'SELECT 1 FROM tokens_revocados WHERE jti = ?',
-      [String(jti || '')],
-    );
+    const [filas] = await pool.query('SELECT 1 FROM tokens_revocados WHERE jti = ? LIMIT 1', [String(jti || '')]);
     return filas.length > 0;
   }
 
-  // consultamos la lista de la tabla
+  // Consulta la lista negra, del más reciente al más viejo.
   async function listar() {
     const [filas] = await pool.query(
       'SELECT jti, usuario, expira, revocado_en FROM tokens_revocados ORDER BY revocado_en DESC, jti',

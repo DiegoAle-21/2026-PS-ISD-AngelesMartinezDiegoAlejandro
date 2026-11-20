@@ -8,13 +8,18 @@
   --verde: #1f7a3f;
   --ambar: #a15c00;
   --rojo: #b42318;
+
+  /* Tipografía: texto en Trebuchet, títulos en Georgia, código en Consolas */
+  --fuente-texto: "Trebuchet MS", "Segoe UI", Tahoma, Verdana, sans-serif;
+  --fuente-titulo: Georgia, "Times New Roman", serif;
+  --fuente-codigo: Consolas, "Courier New", monospace;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--fuente-texto);
   background: var(--fondo);
   color: var(--texto);
   line-height: 1.45;
@@ -26,7 +31,7 @@ header {
   padding: 16px;
 }
 
-header h1 { margin: 0 0 4px; font-size: 1.4rem; }
+header h1 { margin: 0 0 4px; font-size: 1.5rem; font-family: var(--fuente-titulo); letter-spacing: 0.2px; }
 header p { margin: 0; }
 
 main {
@@ -46,7 +51,7 @@ main {
   min-width: 0;
 }
 
-.tarjeta h2 { margin-top: 0; font-size: 1.1rem; }
+.tarjeta h2 { margin-top: 0; font-size: 1.15rem; font-family: var(--fuente-titulo); }
 
 .estado { font-weight: 600; padding: 8px 12px; border-radius: 6px; }
 .con-sesion { background: #e3f4e8; color: var(--verde); }
@@ -62,12 +67,13 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
   font-size: 0.85rem;
+  font-family: var(--fuente-codigo);
   margin: 4px 0;
 }
 
 form { display: grid; gap: 8px; }
 label { display: grid; gap: 4px; font-weight: 600; }
-input, select { padding: 8px; border: 1px solid var(--borde); border-radius: 6px; font: inherit; }
+input, select, textarea { padding: 8px; border: 1px solid var(--borde); border-radius: 6px; font: inherit; }
 
 button {
   padding: 8px 12px;
@@ -97,3 +103,25 @@ th, td { border-bottom: 1px solid var(--borde); padding: 6px; text-align: left; 
 tr.tuya { background: #fff6dc; font-weight: 600; }
 
 .estado-almacen { font-weight: 600; background: #eef2ff; color: #2b3a8c; padding: 6px 10px; border-radius: 6px; }
+
+/* ---------- Navegación entre las dos demos ---------- */
+nav { display: flex; gap: 8px; margin-top: 10px; }
+nav a { color: #fff; text-decoration: none; padding: 4px 12px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; font-size: 0.9rem; }
+nav a.activa { background: #fff; color: var(--guinda); font-weight: 700; }
+code { font-family: var(--fuente-codigo); }
+
+/* ---------- Token JWT (index.html tarjeta 4 y jwt.html) ---------- */
+.ancha { grid-column: 1 / -1; }
+.token { font-family: var(--fuente-codigo); font-size: 0.85rem; word-break: break-all;
+         background: #f0f2f5; border-radius: 6px; padding: 10px; margin: 4px 0; line-height: 1.6; }
+.t-header { color: #c0392b; }
+.t-payload { color: #7d3c98; }
+.t-firma { color: #1f6fb2; }
+.t-punto { color: var(--texto); font-weight: 700; }
+.partes { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.partes h3 { font-size: 0.95rem; margin: 8px 0 2px; }
+.partes h3.t-header, .partes h3.t-payload { border-bottom: 2px solid currentColor; }
+.elementos th { width: 38%; color: var(--suave); font-weight: 600; }
+.elementos td { font-family: var(--fuente-codigo); font-size: 0.85rem; word-break: break-all; }
+.vencida { background: #fff3e0; color: var(--ambar); }
+button.secundario { background: #5b6876; }
